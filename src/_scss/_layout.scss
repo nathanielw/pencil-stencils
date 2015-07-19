@@ -1,0 +1,81 @@
+.header {
+	position: relative;
+	width: 100%;
+	box-sizing: border-box;
+	padding-bottom: 0px;
+	padding-right: 0px;
+
+	color: white;
+
+	background-image: url('../img/HNCK5096-edit.jpg');
+	background-position: center bottom;
+	background-size: cover;
+	background-repeat: no-repeat;
+	overflow: hidden;
+
+	&__content {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&__image {
+		margin: 0;
+
+		overflow: hidden;
+
+		&__inner {
+			width: 100%;
+			height: 100%;
+
+			background-image: url('../img/window.png');
+			background-position: left top;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+	}
+
+	&__title {
+		text-shadow: 0 4px 6px rgba(black, 0.6);
+	}
+}
+
+.window {
+	$baseSize: 28px;
+
+	@extend %shadowed;
+
+	position: relative;
+	margin-top: $baseSize;
+
+	&:before {
+		content: '';
+
+		clear: both;
+		display: block;
+		width: 100%;
+		height: $baseSize;
+
+		background: #333;
+	}
+
+	&:after {
+		$dotSize: 8px;
+		$col: rgba(black, 0.5);
+
+		content: '';
+
+		display: block;
+		position: absolute;
+		top: ($baseSize - $dotSize) / 2;
+		left: ($baseSize - $dotSize) / 2;
+
+
+		width: $dotSize;
+		height: $dotSize;
+		border-radius: 100%;
+
+		background: $col;
+
+		box-shadow:  $dotSize * 1.6 0 0 $col, $dotSize * 3.2 0 0 $col;
+	}
+}

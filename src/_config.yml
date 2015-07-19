@@ -1,0 +1,8 @@
+# Site settings
+title: Pencil Stencils
+description: Free stencil collections for creating mockups in Pencil. Android Lollipop, Bootstrap and more.
+baseurl: "/pencil-stencils" # the subpath of your site, e.g. /blog/
+url: "https://nathanielw.github.io" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
