@@ -4,3 +4,5 @@ _site/
 
 .sass-cache
 *.css.map
+
+bower_components

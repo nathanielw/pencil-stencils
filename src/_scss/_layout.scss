@@ -1,81 +1,76 @@
+body {
+	background: $col-page-bg;
+}
+
+.mdl-layout {
+	position: static; // Overriding MDL default so that the bg is the window's height (not the page's)
+
+	&:before { // The bg of the page. Using a pseudo element to make it possible to fade it out with the gradient.
+		content: '';
+
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+
+		background: $col-page-bg;
+		background-image: linear-gradient(to bottom, rgba(#2196F3, 0.3) -70%, $col-page-bg 90%), url("../img/bg.jpg");
+		background-size: auto, cover;
+		background-repeat: no-repeat;
+		background-position: center top;
+	}
+}
+
 .header {
 	position: relative;
 	width: 100%;
+	height: 320px;
 	box-sizing: border-box;
 	padding-bottom: 0px;
 	padding-right: 0px;
 
 	color: white;
 
-	background-image: url('../img/HNCK5096-edit.jpg');
-	background-position: center bottom;
-	background-size: cover;
-	background-repeat: no-repeat;
-	overflow: hidden;
-
 	&__content {
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	&__image {
-		margin: 0;
-
-		overflow: hidden;
-
-		&__inner {
-			width: 100%;
-			height: 100%;
-
-			background-image: url('../img/window.png');
-			background-position: left top;
-			background-size: cover;
-			background-repeat: no-repeat;
-		}
+		text-align: center;
 	}
 
 	&__title {
-		text-shadow: 0 4px 6px rgba(black, 0.6);
+		text-shadow: 0 4px 12px rgba(black, 0.5);
+
+		font-family: 'Roboto Slab', 'Roboto', Helvetica, sans-serif;
+		font-weight: 400;
 	}
 }
 
-.window {
-	$baseSize: 28px;
+.content--center {
+	max-width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+}
 
-	@extend %shadowed;
+.item-container {
+	margin-bottom: $spacing;
+}
 
-	position: relative;
-	margin-top: $baseSize;
-
-	&:before {
-		content: '';
-
-		clear: both;
-		display: block;
-		width: 100%;
-		height: $baseSize;
-
-		background: #333;
+.mdl-card--horizontal {
+	.mdl-card__supporting-text {
+		flex-grow: 1;
+		padding: $spacing;
+		box-sizing: border-box;
 	}
 
-	&:after {
-		$dotSize: 8px;
-		$col: rgba(black, 0.5);
-
-		content: '';
-
-		display: block;
-		position: absolute;
-		top: ($baseSize - $dotSize) / 2;
-		left: ($baseSize - $dotSize) / 2;
-
-
-		width: $dotSize;
-		height: $dotSize;
-		border-radius: 100%;
-
-		background: $col;
-
-		box-shadow:  $dotSize * 1.6 0 0 $col, $dotSize * 3.2 0 0 $col;
+	.mdl-card__title-text {
+		margin-bottom: $spacing / 2;
 	}
+}
+
+.button--right {
+	float: right;
+}
+
+.mdl-button:not(.mdl-button--icon) ~ .mdl-button--icon.button--right {
+	margin-top: 2px;
 }

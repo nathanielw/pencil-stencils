@@ -12,7 +12,7 @@ var gulp = require('gulp'),
 	merge = require('merge-stream');
 
 var config = {
-	bowerDir: '_bower_components',
+	bowerDir: 'bower_components',
 	dest: '_site',
 	src: 'src'
 }
@@ -32,6 +32,14 @@ gulp.task('css', function() {
 		.pipe(sync.reload({stream:true}));
 });
 
+gulp.task('copy-libs', ['copy-fonts']);
+
+gulp.task('copy-fonts', function() {
+    return gulp.src(config.bowerDir + '/mdi/fonts/**/*.*')
+        .pipe(gulp.dest(config.dest + '/lib/fonts/'))
+		.pipe(sync.reload({stream:true}));
+});
+
 gulp.task('clean', function (cb) {
   del(config.dest, cb);
 });
@@ -40,6 +48,7 @@ gulp.task('build', function(callback) {
 	runSequence('jekyll-build',
 		'css',
 		'js',
+        'copy-libs',
 		'reload',
 		callback);
 });

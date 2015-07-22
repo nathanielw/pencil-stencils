@@ -1,0 +1,9 @@
+/* Material Icons */
+$mdi-font-path: "../lib/fonts";
+
+@import '../../bower_components/mdi/scss/materialdesignicons';
+
+/* fixes for the MDi library */
+.mdi {
+	vertical-align: middle;
+}

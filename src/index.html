@@ -2,22 +2,55 @@
 layout: default
 ---
 
-<div class="mdl-layout mdl-js-layout">
+<div class="mdl-layout">
 	<header class="mdl-grid header">
-		<div class="mdl-cell mdl-cell--4-col mdl-cell--middle header__content">
-			<h1 class="header__title">Stencil Collections for Pencil</h1>
+		<div class="mdl-cell mdl-cell--12-col mdl-cell--middle header__content">
+			<h1 class="header__title">Pencil Stencils</h1>
 			<p>
 				Free stencil collections for creating mockups using the <a href="https://github.com/prikhi/pencil">Pencil UI prototyping tool</a>.
 			</p>
-		</div>
-		<div class="mdl-cell mdl-cell--6-col mdl-cell--hide-tablet mdl-cell--hide-phone mdl-cell--stretch header__image window">
-			<div class="header__image__inner">
-			</div>
+			<p>
+				Created by <a href="https://twitter.com/nathanielnw">@nathanielnw</a>
+			</p>
 		</div>
 	</header>
 
 
 	<main class="mdl-layout__content">
+		<div class="content--center">
+			{% for stencil in site.stencils %}
+			<section class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp item-container">
+				<div class="mdl-cell mdl-cell--4-col">
+					<img src="{{ stencil.image | prepend: '/img/stencils/' | prepend: site.baseurl }}" width="100%" border="0" alt="">
+				</div>
+				<div class="mdl-card mdl-card--horizontal mdl-cell mdl-cell--8-col mdl-cell--stretch">
+					<div class="mdl-card__supporting-text">
+						<h2 class="mdl-card__title-text">{{ stencil.name }}</h2>
+						<div class="">
+							{{ stencil.intro }}
+						</div>
+					</div>
+					<div class="mdl-card__actions mdl-card--border">
+						{% if stencil.downloadUrl %}
+							<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" href="{{ stencil.downloadUrl }}">
+								Download
+						    </a>
+						{%endif %}
+
+						{% if stencil.sourceUrl %}
+							{% capture id %}{{ stencil.collection }}{{ forloop.index }}{% endcapture %}
+							<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect mdl-button--icon button--right" href="{{ stencil.sourceUrl }}" id="{{ id }}">
+								<i class="mdi mdi-xml"></i>
+						    </a>
+							<span class="mdl-tooltip" for="{{ id }}">
+								Source on Github
+							</span>
+						{% endif %}
+					</div>
+				</div>
+			</section>
+			{% endfor %}
+		</div>
 	</main>
 
 	<footer class="mdl-mini-footer">
