@@ -1,4 +1,7 @@
+// General stuff that applies to the large areas of the page/site and overriding general defaults
+
 body {
+	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 	background: $col-page-bg;
 }
 
@@ -23,54 +26,12 @@ body {
 	}
 }
 
-.header {
-	position: relative;
-	width: 100%;
-	height: 320px;
-	box-sizing: border-box;
-	padding-bottom: 0px;
-	padding-right: 0px;
-
-	color: white;
-
-	&__content {
-		text-align: center;
-	}
-
-	&__title {
-		text-shadow: 0 4px 12px rgba(black, 0.5);
-
-		font-family: 'Roboto Slab', 'Roboto', Helvetica, sans-serif;
-		font-weight: 400;
-	}
-}
-
 .content--center {
 	max-width: 960px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.item-container {
-	margin-bottom: $spacing;
-}
-
-.mdl-card--horizontal {
-	.mdl-card__supporting-text {
-		flex-grow: 1;
-		padding: $spacing;
-		box-sizing: border-box;
-	}
-
-	.mdl-card__title-text {
-		margin-bottom: $spacing / 2;
-	}
-}
-
-.button--right {
-	float: right;
-}
-
-.mdl-button:not(.mdl-button--icon) ~ .mdl-button--icon.button--right {
-	margin-top: 2px;
+a {
+	text-decoration: none;
 }

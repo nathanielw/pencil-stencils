@@ -17,13 +17,12 @@ layout: default
 
 
 	<main class="mdl-layout__content">
-		<div class="content--center">
+		<div class="content--center mdl-grid">
 			{% for stencil in site.stencils %}
-			<section class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp item-container">
-				<div class="mdl-cell mdl-cell--4-col">
-					<img src="{{ stencil.image | prepend: '/img/stencils/' | prepend: site.baseurl }}" width="100%" border="0" alt="">
+			<section class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-card mdl-card--horizontal item-container">
+				<div class="mdl-card__media mdl-card__media--cover" style="background-image: url('http://placehold.it/450x250')">
 				</div>
-				<div class="mdl-card mdl-card--horizontal mdl-cell mdl-cell--8-col mdl-cell--stretch">
+				<div class="mdl-card__content">
 					<div class="mdl-card__supporting-text">
 						<h2 class="mdl-card__title-text">{{ stencil.name }}</h2>
 						<div class="">
@@ -42,13 +41,13 @@ layout: default
 							<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect mdl-button--icon button--right" href="{{ stencil.sourceUrl }}" id="{{ id }}">
 								<i class="mdi mdi-xml"></i>
 						    </a>
-							<span class="mdl-tooltip" for="{{ id }}">
-								Source on Github
-							</span>
 						{% endif %}
 					</div>
 				</div>
 			</section>
+			<span class="mdl-tooltip" for="{{ id }}">
+				Source on Github
+			</span>
 			{% endfor %}
 		</div>
 	</main>

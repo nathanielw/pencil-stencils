@@ -1,0 +1,71 @@
+.item-container {
+	margin-top: $spacing / 2;
+	margin-bottom: $spacing / 2;
+}
+
+.mdl-card__media--cover {
+	background-size: cover;
+}
+
+// Card that displays image on the left (on tablet and desktop)
+.mdl-card--horizontal {
+	.mdl-card__supporting-text {
+		flex: 1;
+		padding: $spacing;
+		box-sizing: border-box;
+	}
+
+	.mdl-card__title-text {
+		margin-bottom: $spacing / 2;
+	}
+
+	.mdl-card__content {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+	}
+}
+
+// Phone
+@media (max-width: $grid-tablet-breakpoint - 1) {
+	.mdl-card--horizontal {
+		.mdl-card__media {
+			height: 180px;
+		}
+	}
+}
+
+// Tablet & Desktop
+@media (min-width: $grid-tablet-breakpoint) {
+	.mdl-card--horizontal {
+		.mdl-card__supporting-text {
+			flex-grow: 1;
+		}
+
+		.mdl-card__media {
+			position: absolute;
+			width: 33%;
+			height: 100%;
+
+			&~* {
+				margin-left: 33%;
+			}
+		}
+
+		.mdl-card__content {
+			display: flex;
+			flex-direction: column;
+			flex: 1;
+		}
+	}
+}
+
+// Action bar buttons on the right
+.button--right {
+	float: right;
+}
+
+.mdl-button:not(.mdl-button--icon) ~ .mdl-button--icon.button--right {
+	// Re-centering (vertically) right-aligned icon buttons
+	margin-top: 2px;
+}
