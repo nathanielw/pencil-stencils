@@ -5,13 +5,12 @@
 
 .mdl-card__media--cover {
 	background-size: cover;
+	background-position: top center;
 }
 
 // Card that displays image on the left (on tablet and desktop)
 .mdl-card--horizontal {
 	.mdl-card__supporting-text {
-		flex: 1;
-		padding: $spacing;
 		box-sizing: border-box;
 	}
 
@@ -27,8 +26,12 @@
 }
 
 // Phone
-@media (max-width: $grid-tablet-breakpoint - 1) {
+@media #{$query-small} {
 	.mdl-card--horizontal {
+		.mdl-card__supporting-text {
+			padding: 24px 16px;
+		}
+
 		.mdl-card__media {
 			height: 180px;
 		}
@@ -36,10 +39,11 @@
 }
 
 // Tablet & Desktop
-@media (min-width: $grid-tablet-breakpoint) {
+@media (min-width: $breakpoint-medium) {
 	.mdl-card--horizontal {
 		.mdl-card__supporting-text {
 			flex-grow: 1;
+			padding: 24px;
 		}
 
 		.mdl-card__media {

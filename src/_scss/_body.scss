@@ -19,10 +19,26 @@ body {
 		height: 100%;
 
 		background: $col-page-bg;
-		background-image: linear-gradient(to bottom, rgba(#2196F3, 0.3) -70%, $col-page-bg 90%), url("../img/bg.jpg");
+		background-image: $page-bg-gradient, url("../img/bg.jpg");
 		background-size: auto, cover;
 		background-repeat: no-repeat;
 		background-position: center top;
+
+		@media #{$query-small} {
+			background-image: $page-bg-gradient, url("../img/bg-480px.jpg");
+		}
+
+		@media #{$query-medium}, #{$query-small} and (min-resolution: 2dppx), #{$query-small} and (-webkit-min-device-pixel-ratio: 2) {
+			background-image: $page-bg-gradient, url("../img/bg-960px.jpg");
+		}
+
+		@media #{$query-large}, #{$query-medium} and (min-resolution: 2dppx), #{$query-medium} and (-webkit-min-device-pixel-ratio: 2) {
+			background-image: $page-bg-gradient, url("../img/bg-1920px.jpg");
+		}
+
+		@media #{$query-extra-large}, #{$query-large} and (min-resolution: 2dppx), #{$query-large} and (-webkit-min-device-pixel-ratio: 2)  {
+			background-image: $page-bg-gradient, url("../img/bg@2x.jpg");
+		}
 	}
 }
 
