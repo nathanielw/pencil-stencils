@@ -10,7 +10,8 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),
 	runSequence = require('run-sequence'),
 	merge = require('merge-stream'),
-	responsive = require('gulp-responsive');
+	responsive = require('gulp-responsive'),
+	imagemin = require('gulp-imagemin');
 
 var config = {
 	bowerDir: 'bower_components',
@@ -33,8 +34,8 @@ gulp.task('css', function() {
 		.pipe(sync.reload({stream:true}));
 });
 
-gulp.task('images', function() {
-	return gulp.src([config.src + '/img/bg.jpg'])
+gulp.task('images-background', function() {
+	return gulp.src(config.src + '/_img/bg.jpg')
 		.pipe(responsive(
 			[
 				{
@@ -55,8 +56,27 @@ gulp.task('images', function() {
 					rename: 'bg-480px.jpg'
 				}
 			]
-		)).pipe(gulp.dest(config.dest + '/img'));
+		))
+		.pipe(gulp.dest(config.dest + '/img'));
 });
+
+gulp.task('images-stencils', function() {
+	return gulp.src(config.src + '/_img/stencils/*.png')
+		.pipe(responsive(
+			[
+				{
+					name: '*.png',
+					width: '50%'
+				}
+			]
+		))
+		.pipe(imagemin({
+			progressive: true
+		}))
+		.pipe(gulp.dest(config.dest + '/img/stencils'));
+});
+
+gulp.task('images', ['images-background', 'images-stencils']);
 
 gulp.task('copy-libs', ['copy-fonts']);
 
@@ -75,6 +95,13 @@ gulp.task('build', function(callback) {
 		'css',
 		'js',
 		'images',
+		'copy-libs',
+		'reload',
+		callback);
+});
+
+gulp.task('fastbuild', function(callback) {
+	runSequence('jekyll-build',
 		'copy-libs',
 		'reload',
 		callback);
@@ -110,5 +137,5 @@ gulp.task('watch', ['browser-sync'], function() {
   // Watch images
   gulp.watch(config.src + '/img/**/*.*', ['images']);
   // Watch anything Jekyll handles
-  gulp.watch([config.src + '/**/*.html', config.src + '/**/*.md'], ['build']);
+  gulp.watch([config.src + '/**/*.html', config.src + '/**/*.md'], ['fastbuild']);
 });

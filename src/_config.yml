@@ -9,3 +9,5 @@ markdown: kramdown
 
 collections:
 - stencils
+
+keep_files: ["img", "js", "css"]
