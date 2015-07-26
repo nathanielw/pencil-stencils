@@ -11,7 +11,9 @@ var gulp = require('gulp'),
 	runSequence = require('run-sequence'),
 	merge = require('merge-stream'),
 	responsive = require('gulp-responsive'),
-	imagemin = require('gulp-imagemin');
+	imagemin = require('gulp-imagemin'),
+	autoprefixer = require('gulp-autoprefixer'),
+	minifyCss = require('gulp-minify-css');
 
 var config = {
 	bowerDir: 'bower_components',
@@ -30,6 +32,11 @@ gulp.task('js', function() {
 gulp.task('css', function() {
 	return gulp.src(config.src + '/_scss/main.scss')
 		.pipe(sass().on('error', sass.logError))
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions'],
+			cascade: false
+		}))
+		.pipe(minifyCss())
 		.pipe(gulp.dest(config.dest + '/css'))
 		.pipe(sync.reload({stream:true}));
 });
