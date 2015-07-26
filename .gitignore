@@ -6,3 +6,5 @@ _site/
 *.css.map
 
 bower_components
+
+.publish

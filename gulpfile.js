@@ -13,7 +13,8 @@ var gulp = require('gulp'),
 	responsive = require('gulp-responsive'),
 	imagemin = require('gulp-imagemin'),
 	autoprefixer = require('gulp-autoprefixer'),
-	minifyCss = require('gulp-minify-css');
+	minifyCss = require('gulp-minify-css'),
+	ghPages = require('gulp-gh-pages');
 
 var config = {
 	bowerDir: 'bower_components',
@@ -134,6 +135,11 @@ gulp.task('browser-sync', ['build'], function() {
 		host: "localhost",
 		open: false
 	});
+});
+
+gulp.task('deploy', function() {
+	return gulp.src(config.dest + '/**/*')
+	.pipe(ghPages());
 });
 
 gulp.task('watch', ['browser-sync'], function() {
