@@ -1,8 +1,0 @@
-node_modules
-
-_site/
-
-.sass-cache
-*.css.map
-
-bower_components
