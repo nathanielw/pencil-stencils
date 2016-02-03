@@ -32,14 +32,14 @@ layout: default
 						{% if stencil.downloadUrl %}
 							<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" href="{{ stencil.downloadUrl }}">
 								Download
-						    </a>
+							</a>
 						{%endif %}
 
 						{% if stencil.sourceUrl %}
 							{% capture id %}{{ stencil.collection }}{{ forloop.index }}{% endcapture %}
 							<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon button--right mdl-color-text--grey-600" href="{{ stencil.sourceUrl }}" id="{{ id }}">
-								<i class="mdi mdi-xml" aria-label="Source on Github"></i>
-						    </a>
+								<i class="material-icons" aria-label="Source on Github">code</i>
+							</a>
 						{% endif %}
 					</div>
 				</div>
